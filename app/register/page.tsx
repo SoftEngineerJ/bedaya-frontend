@@ -50,7 +50,10 @@ export default function ServiceBooking() {
       sessionStorage.setItem("bookingData", JSON.stringify(formData));
 
       // Send data to backend API
-      const response = await fetch("http://localhost:8080/api/booking", {
+      const apiBaseUrl =
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+
+      const response = await fetch(`${apiBaseUrl}/api/booking`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
