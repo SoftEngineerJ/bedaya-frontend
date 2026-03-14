@@ -168,7 +168,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-slate-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-slate-700/50 text-white placeholder-slate-400"
-                      placeholder=""
+                      placeholder="+49 123 456789"
                     />
                   </div>
                   <div>
@@ -348,10 +348,12 @@ export default function Contact() {
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">
+                    <h3 className="text-lg font-semibold text-white mb-2">
                       البريد الإلكتروني
                     </h3>
-                    <p className="text-slate-300 mb-1">info@bedaya-study.com</p>
+                    <p className="text-slate-300 mb-1">
+                      info@studentenhilfe.de
+                    </p>
                     <p className="text-sm text-slate-400">
                       نرد على جميع الرسائل خلال 24 ساعة
                     </p>

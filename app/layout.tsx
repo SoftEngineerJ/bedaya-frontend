@@ -13,14 +13,8 @@ export const metadata: Metadata = {
   title: "مساعدة الطلاب العرب في ألمانيا",
   description:
     "نحن نساعد الطلاب العرب على بدء حياتهم الأكاديمية في ألمانيا - من التقديم الجامعي إلى أول يوم في الدراسة",
-  keywords:
-    "مساعدة الطلاب العرب في ألمانيا, دراسة في ألمانيا, الدراسة في ألمانيا, الجامعات الألمانية, التقديم للجامعات في ألمانيا, قبول جامعي ألمانيا, القبول الجامعي في ألمانيا, التسجيل الجامعي في ألمانيا, معادلة الشهادات في ألمانيا, سكن طلابي ألمانيا, البحث عن سكن في ألمانيا, السكن في ألمانيا للطلاب, التأمين الصحي للطلاب في ألمانيا, فيزا الدراسة ألمانيا, فيزا طالب ألمانيا, الإقامة للطلاب في ألمانيا, حساب بنكي مغلق ألمانيا, حساب مغلق للطلاب, دورات اللغة الألمانية, كورس لغة ألمانية, تعلم اللغة الألمانية, الحياة في ألمانيا للطلاب, وصول ألمانيا, استقبال في المطار ألمانيا, تسجيل السكن Anmeldung, Anmeldung ألمانيا, فتح حساب بنكي في ألمانيا, ترجمة وتصديق المستندات, خدمات الطلاب العرب, استشارة دراسة في ألمانيا, Studentenhilfe, Bedaya",
+  keywords: "طلاب عرب, ألمانيا, دراسة, جامعة, سكن, مساعدة",
   authors: [{ name: "Studentenhilfe Deutschland" }],
-  icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
-  },
   openGraph: {
     title: "مساعدة الطلاب العرب في ألمانيا",
     description: "مرشدك الموثوق للدراسة في ألمانيا",
@@ -39,9 +33,6 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charSet="UTF-8" />
-        <link rel="icon" href="/icon.png" sizes="any" />
-        <link rel="shortcut icon" href="/icon.png" />
-        <link rel="apple-touch-icon" href="/icon.png" />
       </head>
       <body
         className={`${cairo.variable} font-arabic antialiased bg-gray-50 text-gray-900`}

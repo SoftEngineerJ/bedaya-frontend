@@ -183,7 +183,7 @@ export default function ThankYou() {
                 <p className="text-slate-300 text-sm mb-4">
                   أسرع طريقة للتواصل
                 </p>
-                <UiButton size="sm" className="w-full" disabled>
+                <UiButton href="#" size="sm" className="w-full cursor-pointer">
                   افتح WhatsApp
                 </UiButton>
               </div>
@@ -218,7 +218,7 @@ export default function ThankYou() {
                   للاستفسارات المفصلة
                 </p>
                 <UiButton
-                  href="mailto:info@bedaya-study.com"
+                  href="mailto:info@studentenhilfe.de"
                   size="sm"
                   className="w-full cursor-pointer"
                 >
