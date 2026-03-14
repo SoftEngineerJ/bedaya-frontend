@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   keywords: "طلاب عرب, ألمانيا, دراسة, جامعة, سكن, مساعدة",
   authors: [{ name: "Studentenhilfe Deutschland" }],
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
   openGraph: {
     title: "مساعدة الطلاب العرب في ألمانيا",
@@ -38,6 +38,9 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charSet="UTF-8" />
+        <link rel="icon" href="/icon.png" sizes="any" />
+        <link rel="shortcut icon" href="/icon.png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
       </head>
       <body
         className={`${cairo.variable} font-arabic antialiased bg-gray-50 text-gray-900`}
