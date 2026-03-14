@@ -80,7 +80,7 @@ async function sendConfirmationEmail(bookingData: any) {
             <h3 style="color: #0c4a6e; margin-top: 0;">الخطوات التالية:</h3>
             <ul style="color: #0c4a6e; line-height: 1.6;">
               <li>سيقوم فريقنا بمراجعة طلبك خلال 2-4 ساعات</li>
-              <li>سنتواصل معك عبر WhatsApp أو الهاتف خلال 24 ساعة</li>
+              <li>سنتواصل معك خلال 24 ساعة</li>
               <li>سنحدد معاً موعد الاستشارة الأولى</li>
               <li>سنبدأ في إعداد خطة مخصصة لتحقيق أهدافك</li>
             </ul>
@@ -89,7 +89,6 @@ async function sendConfirmationEmail(bookingData: any) {
           <div style="text-align: center; margin-top: 30px; padding: 20px; background: #1e293b; border-radius: 10px;">
             <p style="color: white; margin: 0;">هل لديك أسئلة؟ تواصل معنا مباشرة:</p>
             <p style="color: #60a5fa; margin: 10px 0;">info@bedaya-study.com</p>
-            <a href="https://wa.me/49123456789" style="background: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">WhatsApp</a>
           </div>
           
           <div style="text-align: center; margin-top: 30px; color: #64748b; font-size: 14px;">
@@ -171,10 +170,7 @@ async function sendAdminNotification(bookingData: any) {
             </ol>
           </div>
           
-          <div style="text-align: center; margin-top: 20px;">
-            <a href="https://wa.me/${bookingData.phone.replace(/\D/g, "")}" style="background: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">تواصل عبر WhatsApp</a>
-            <a href="tel:${bookingData.phone}" style="background: #3b82f6; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px;">اتصل الآن</a>
-          </div>
+          <div style="text-align: center; margin-top: 20px;"></div>
         </div>
       `,
     };

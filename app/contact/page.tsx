@@ -168,7 +168,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-slate-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-slate-700/50 text-white placeholder-slate-400"
-                      placeholder="+49 123 456789"
+                      placeholder=""
                     />
                   </div>
                   <div>
