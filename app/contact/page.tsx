@@ -348,12 +348,10 @@ export default function Contact() {
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">
+                    <h3 className="text-xl font-bold text-white mb-2">
                       البريد الإلكتروني
                     </h3>
-                    <p className="text-slate-300 mb-1">
-                      info@studentenhilfe.de
-                    </p>
+                    <p className="text-slate-300 mb-1">info@bedaya-study.com</p>
                     <p className="text-sm text-slate-400">
                       نرد على جميع الرسائل خلال 24 ساعة
                     </p>

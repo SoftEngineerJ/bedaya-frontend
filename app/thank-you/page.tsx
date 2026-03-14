@@ -218,7 +218,7 @@ export default function ThankYou() {
                   للاستفسارات المفصلة
                 </p>
                 <UiButton
-                  href="mailto:info@studentenhilfe.de"
+                  href="mailto:info@bedaya-study.com"
                   size="sm"
                   className="w-full cursor-pointer"
                 >
