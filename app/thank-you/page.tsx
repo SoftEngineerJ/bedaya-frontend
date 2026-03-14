@@ -3,7 +3,16 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { CheckCircle, Clock, MessageCircle, Phone, Mail, Calendar, Users, Star } from "lucide-react";
+import {
+  CheckCircle,
+  Clock,
+  MessageCircle,
+  Phone,
+  Mail,
+  Calendar,
+  Users,
+  Star,
+} from "lucide-react";
 import UiButton from "../components/UiButton";
 
 export default function ThankYou() {
@@ -12,16 +21,16 @@ export default function ThankYou() {
 
   useEffect(() => {
     // Get booking data from session storage or URL params
-    const storedData = sessionStorage.getItem('bookingData');
+    const storedData = sessionStorage.getItem("bookingData");
     if (storedData) {
       try {
         const data = JSON.parse(storedData);
         setBookingData(data);
       } catch (error) {
-        console.error('Error parsing booking data:', error);
+        console.error("Error parsing booking data:", error);
       }
     }
-    
+
     // Simulate loading and then show success
     setTimeout(() => {
       setIsLoading(false);
@@ -60,24 +69,31 @@ export default function ThankYou() {
               تم استلام طلبك بنجاح!
             </h1>
             <p className="text-xl text-slate-200 leading-relaxed mb-8">
-              شكراً لثقتك ببداية. فريقنا سيقوم بمراجعة طلبك والتواصل معك خلال 24 ساعة.
+              شكراً لثقتك ببداية. فريقنا سيقوم بمراجعة طلبك والتواصل معك خلال 24
+              ساعة.
             </p>
-            
+
             {bookingData && (
               <div className="bg-slate-700/30 rounded-lg p-6 mb-8 text-right">
-                <h3 className="text-lg font-semibold text-white mb-4">تفاصيل طلبك:</h3>
+                <h3 className="text-lg font-semibold text-white mb-4">
+                  تفاصيل طلبك:
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-300">
                   <div>
-                    <span className="text-blue-400">الاسم:</span> {bookingData.firstName} {bookingData.lastName}
+                    <span className="text-blue-400">الاسم:</span>{" "}
+                    {bookingData.firstName} {bookingData.lastName}
                   </div>
                   <div>
-                    <span className="text-blue-400">البريد:</span> {bookingData.email}
+                    <span className="text-blue-400">البريد:</span>{" "}
+                    {bookingData.email}
                   </div>
                   <div>
-                    <span className="text-blue-400">الخدمة:</span> {bookingData.desiredService}
+                    <span className="text-blue-400">الخدمة:</span>{" "}
+                    {bookingData.desiredService}
                   </div>
                   <div>
-                    <span className="text-blue-400">المستوى:</span> {bookingData.studyLevel}
+                    <span className="text-blue-400">المستوى:</span>{" "}
+                    {bookingData.studyLevel}
                   </div>
                 </div>
               </div>
@@ -107,7 +123,9 @@ export default function ThankYou() {
               <div className="text-4xl mb-4 text-blue-400">
                 <Clock className="w-12 h-12 mx-auto" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">مراجعة الطلب</h3>
+              <h3 className="text-xl font-bold text-white mb-2">
+                مراجعة الطلب
+              </h3>
               <p className="text-slate-300 mb-4">
                 سيقوم فريقنا بمراجعة طلبك وتحليل احتياجاتك
               </p>
@@ -118,7 +136,9 @@ export default function ThankYou() {
               <div className="text-4xl mb-4 text-green-400">
                 <MessageCircle className="w-12 h-12 mx-auto" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">التواصل المباشر</h3>
+              <h3 className="text-xl font-bold text-white mb-2">
+                التواصل المباشر
+              </h3>
               <p className="text-slate-300 mb-4">
                 سنتواصل معك عبر WhatsApp أو الهاتف لمناقشة التفاصيل
               </p>
@@ -129,7 +149,9 @@ export default function ThankYou() {
               <div className="text-4xl mb-4 text-purple-400">
                 <Calendar className="w-12 h-12 mx-auto" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">تحديد الموعد</h3>
+              <h3 className="text-xl font-bold text-white mb-2">
+                تحديد الموعد
+              </h3>
               <p className="text-slate-300 mb-4">
                 نحدد معاً موعد الاستشارة الأولى وبدء رحلتك الدراسية
               </p>
@@ -149,15 +171,19 @@ export default function ThankYou() {
             <p className="text-xl text-slate-200 mb-8">
               يمكنك التواصل معنا مباشرة عبر أي من هذه الطرق
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-slate-700/30 rounded-lg p-6">
                 <div className="text-3xl mb-4 text-green-400">
                   <MessageCircle className="w-8 h-8 mx-auto" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">WhatsApp</h3>
-                <p className="text-slate-300 text-sm mb-4">أسرع طريقة للتواصل</p>
-                <UiButton href="#" size="sm" className="w-full cursor-pointer">
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  WhatsApp
+                </h3>
+                <p className="text-slate-300 text-sm mb-4">
+                  أسرع طريقة للتواصل
+                </p>
+                <UiButton size="sm" className="w-full" disabled>
                   افتح WhatsApp
                 </UiButton>
               </div>
@@ -166,9 +192,17 @@ export default function ThankYou() {
                 <div className="text-3xl mb-4 text-blue-400">
                   <Phone className="w-8 h-8 mx-auto" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">الهاتف</h3>
-                <p className="text-slate-300 text-sm mb-4">للاستشارات المباشرة</p>
-                <UiButton href="tel:+49123456789" size="sm" className="w-full cursor-pointer">
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  الهاتف
+                </h3>
+                <p className="text-slate-300 text-sm mb-4">
+                  للاستشارات المباشرة
+                </p>
+                <UiButton
+                  href="tel:+49123456789"
+                  size="sm"
+                  className="w-full cursor-pointer"
+                >
                   اتصل الآن
                 </UiButton>
               </div>
@@ -177,9 +211,17 @@ export default function ThankYou() {
                 <div className="text-3xl mb-4 text-purple-400">
                   <Mail className="w-8 h-8 mx-auto" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">البريد الإلكتروني</h3>
-                <p className="text-slate-300 text-sm mb-4">للاستفسارات المفصلة</p>
-                <UiButton href="mailto:info@studentenhilfe.de" size="sm" className="w-full cursor-pointer">
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  البريد الإلكتروني
+                </h3>
+                <p className="text-slate-300 text-sm mb-4">
+                  للاستفسارات المفصلة
+                </p>
+                <UiButton
+                  href="mailto:info@studentenhilfe.de"
+                  size="sm"
+                  className="w-full cursor-pointer"
+                >
                   أرسل رسالة
                 </UiButton>
               </div>
@@ -212,7 +254,8 @@ export default function ThankYou() {
                 ))}
               </div>
               <p className="text-slate-300 mb-4 italic">
-                "خدمة ممتازة وسريعة. ساعدوني في الحصول على قبولة في جامعة ميونخ خلال شهرين فقط!"
+                "خدمة ممتازة وسريعة. ساعدوني في الحصول على قبولة في جامعة ميونخ
+                خلال شهرين فقط!"
               </p>
               <div className="text-white font-semibold">أحمد محمد</div>
               <div className="text-slate-400 text-sm">هندسة مدنية - ميونخ</div>
@@ -225,7 +268,8 @@ export default function ThankYou() {
                 ))}
               </div>
               <p className="text-slate-300 mb-4 italic">
-                "الفريق محترف جداً ويساعد في كل خطوة. أنصح أي طالب عربي بالتعامل معهم."
+                "الفريق محترف جداً ويساعد في كل خطوة. أنصح أي طالب عربي بالتعامل
+                معهم."
               </p>
               <div className="text-white font-semibold">فاطمة علي</div>
               <div className="text-slate-400 text-sm">طب - برلين</div>
@@ -238,10 +282,13 @@ export default function ThankYou() {
                 ))}
               </div>
               <p className="text-slate-300 mb-4 italic">
-                "تجربة رائعة من البداية للنهاية. ساعدوني في السكن والتأمين وكل شيء."
+                "تجربة رائعة من البداية للنهاية. ساعدوني في السكن والتأمين وكل
+                شيء."
               </p>
               <div className="text-white font-semibold">خالد أحمد</div>
-              <div className="text-slate-400 text-sm">علوم الحاسب - هامبورغ</div>
+              <div className="text-slate-400 text-sm">
+                علوم الحاسب - هامبورغ
+              </div>
             </div>
           </div>
         </div>
@@ -261,7 +308,11 @@ export default function ThankYou() {
               <UiButton href="/contact" size="lg" className="cursor-pointer">
                 تواصل معنا
               </UiButton>
-              <UiButton href="/preise" size="lg" className="border border-white/20 bg-white/10 hover:bg-white/20 cursor-pointer">
+              <UiButton
+                href="/preise"
+                size="lg"
+                className="border border-white/20 bg-white/10 hover:bg-white/20 cursor-pointer"
+              >
                 شاهد الأسعار
               </UiButton>
             </div>
