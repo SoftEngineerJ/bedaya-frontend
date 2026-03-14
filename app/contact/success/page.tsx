@@ -200,12 +200,6 @@ export default function ContactSuccess() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <div className="bg-slate-800/50 backdrop-blur-lg rounded-lg p-6 border border-slate-700/50">
               <div className="text-blue-400 font-semibold mb-2">
-                الهاتف والواتساب
-              </div>
-              <div className="text-white text-xl">+49 123 456789</div>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-lg rounded-lg p-6 border border-slate-700/50">
-              <div className="text-blue-400 font-semibold mb-2">
                 البريد الإلكتروني
               </div>
               <div className="text-white text-xl">info@studentenhilfe.de</div>
