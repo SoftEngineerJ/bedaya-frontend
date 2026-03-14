@@ -88,7 +88,7 @@ async function sendConfirmationEmail(bookingData: any) {
           
           <div style="text-align: center; margin-top: 30px; padding: 20px; background: #1e293b; border-radius: 10px;">
             <p style="color: white; margin: 0;">هل لديك أسئلة؟ تواصل معنا مباشرة:</p>
-            <p style="color: #60a5fa; margin: 10px 0;">info@studentenhilfe.de</p>
+            <p style="color: #60a5fa; margin: 10px 0;">info@bedaya-study.com</p>
             <a href="https://wa.me/49123456789" style="background: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">WhatsApp</a>
           </div>
           
@@ -114,7 +114,7 @@ async function sendConfirmationEmail(bookingData: any) {
         - التواصل معك خلال 24 ساعة
         - تحديد موعد الاستشارة الأولى
         
-        info@studentenhilfe.de
+        info@bedaya-study.com
       `,
     };
 
@@ -139,7 +139,7 @@ async function sendConfirmationEmail(bookingData: any) {
 async function sendAdminNotification(bookingData: any) {
   try {
     const notification = {
-      to: "info@studentenhilfe.de", // Admin email
+      to: "info@bedaya-study.com", // Admin email
       subject: `طلب جديد: ${bookingData.desiredService} - ${bookingData.firstName} ${bookingData.lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
