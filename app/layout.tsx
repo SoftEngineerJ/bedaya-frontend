@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     "نحن نساعد الطلاب العرب على بدء حياتهم الأكاديمية في ألمانيا - من التقديم الجامعي إلى أول يوم في الدراسة",
   keywords: "طلاب عرب, ألمانيا, دراسة, جامعة, سكن, مساعدة",
   authors: [{ name: "Studentenhilfe Deutschland" }],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "مساعدة الطلاب العرب في ألمانيا",
     description: "مرشدك الموثوق للدراسة في ألمانيا",
