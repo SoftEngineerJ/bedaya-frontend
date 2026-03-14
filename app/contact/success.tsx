@@ -205,7 +205,7 @@ export default function ContactSuccess() {
             هل لديك أسئلة إضافية؟
           </h2>
           <p className="text-xl text-slate-200 mb-8">
-            يمكنك دائماً التواصل معنا مباشرة عبر الهاتف أو الواتساب
+            يمكنك دائماً التواصل معنا عبر البريد الإلكتروني
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
