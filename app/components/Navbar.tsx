@@ -70,15 +70,16 @@ const Navbar = () => {
           </div>
 
           {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4 space-x-reverse">
-            <Link
-              href="/login"
-              className="text-blue-400 hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              تسجيل الدخول
-            </Link>
+          <div className="hidden md:flex items-center gap-4 space-x-reverse">
             <UiButton href="/register" size="sm">
-              التسجيل
+              احجز خدمة
+            </UiButton>
+            <UiButton
+              href="/preise"
+              size="sm"
+              className="border border-white/20 bg-white/10 hover:bg-white/20"
+            >
+              الأسعار
             </UiButton>
           </div>
 
@@ -134,49 +135,51 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-800/90 backdrop-blur-sm border border-slate-700/50">
             <Link
               href="/"
-              className="text-slate-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium"
+              className="text-slate-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               الصفحة الرئيسية
             </Link>
             <Link
-              href="/services"
-              className="text-slate-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              الخدمات
-            </Link>
-            <Link
               href="/about"
-              className="text-slate-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium"
+              className="text-slate-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               من نحن
             </Link>
             <Link
+              href="/services"
+              className="text-slate-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              الخدمات
+            </Link>
+            <Link
               href="/contact"
-              className="text-slate-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium"
+              className="text-slate-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               التواصل
             </Link>
-            <div className="border-t border-gray-200 pt-3 mt-3">
-              <Link
-                href="/login"
-                className="text-blue-400 hover:text-blue-300 block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                تسجيل الدخول
-              </Link>
-              <UiButton
-                href="/register"
-                size="md"
-                className="w-full mt-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                التسجيل
-              </UiButton>
-            </div>
+          </div>
+
+          <div className="px-2 pt-4 pb-3 border-t border-slate-700">
+            <UiButton
+              href="/register"
+              size="md"
+              className="w-full mt-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              احجز خدمة
+            </UiButton>
+            <UiButton
+              href="/preise"
+              size="md"
+              className="w-full mt-4 border border-white/20 bg-white/10 hover:bg-white/20"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              الأسعار
+            </UiButton>
           </div>
         </div>
       )}

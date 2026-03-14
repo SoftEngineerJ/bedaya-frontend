@@ -38,13 +38,32 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Redirect to success page using Next.js router
-    router.push("/contact/success");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("http://localhost:8080/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        router.push("/contact/success");
+      } else {
+        const errorData = await response.json();
+        alert("Fehler: " + (errorData || "Unbekannter Fehler"));
+      }
+    } catch (error) {
+      alert("Fehler beim Senden: " + (error as Error).message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -303,8 +322,13 @@ export default function Contact() {
                   />
                 </div>
 
-                <UiButton type="submit" className="w-full" size="lg">
-                  إرسال الرسالة
+                <UiButton
+                  type="submit"
+                  className="w-full cursor-pointer"
+                  size="lg"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "يتم الإرسال..." : "إرسال الرسالة"}
                 </UiButton>
               </form>
             </div>
@@ -329,21 +353,6 @@ export default function Contact() {
                     </p>
                     <p className="text-sm text-slate-400">
                       نرد على جميع الرسائل خلال 24 ساعة
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-gradient-to-br from-blue-800 to-blue-900 text-white p-3 rounded-lg ml-6">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">
-                      الهاتف والواتساب
-                    </h3>
-                    <p className="text-slate-300 mb-1">+49 123 456789</p>
-                    <p className="text-sm text-slate-400">
-                      متوفر يومياً من 9 صباحاً حتى 6 مساءً
                     </p>
                   </div>
                 </div>
@@ -378,22 +387,6 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* WhatsApp Button */}
-              <div className="mt-8">
-                <UiButton
-                  href="https://wa.me/49123456789"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex"
-                  size="md"
-                >
-                  <span className="ml-2">
-                    <MessageCircle className="w-5 h-5" />
-                  </span>
-                  راسلنا عبر واتساب
-                </UiButton>
               </div>
 
               {/* Security Notice */}

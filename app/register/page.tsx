@@ -4,61 +4,80 @@ import { useState } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { CheckCircle, Shield, Rocket } from "lucide-react";
+import {
+  CheckCircle,
+  Shield,
+  Rocket,
+  Calendar,
+  CreditCard,
+} from "lucide-react";
 import UiButton from "../components/UiButton";
 
-export default function Register() {
+export default function ServiceBooking() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
     country: "",
-    city: "",
     desiredService: "",
     studyLevel: "",
-    password: "",
-    confirmPassword: "",
-    agreeToTerms: false,
-    newsletter: false,
+    message: "",
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) => {
     const target = e.target as HTMLInputElement;
-    const { name, value, type } = target;
-    const checked = type === "checkbox" ? target.checked : false;
+    const { name, value } = target;
 
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    if (formData.password !== formData.confirmPassword) {
-      alert("كلمة المرور غير متطابقة!");
-      return;
+    try {
+      // Store booking data in session storage for thank you page
+      sessionStorage.setItem("bookingData", JSON.stringify(formData));
+
+      // Send data to backend API
+      const response = await fetch("http://localhost:8080/api/booking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Redirect to thank you page
+        window.location.href = "/thank-you";
+      } else {
+        const errorData = await response.text();
+        alert("Fehler: " + (errorData || "Unbekannter Fehler"));
+      }
+    } catch (error) {
+      console.error("Booking submission error:", error);
+      alert("Fehler beim Senden: " + (error as Error).message);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    if (!formData.agreeToTerms) {
-      alert("يجب الموافقة على الشروط والأحكام!");
-      return;
-    }
-
-    // Handle registration logic here
-    console.log("Registration attempt:", formData);
-    alert("تم إنشاء حسابك بنجاح! يرجى التحقق من بريدك الإلكتروني.");
   };
 
   return (
     <div className="min-h-screen bg-slate-900">
       <Navbar />
 
-      {/* Register Section */}
+      {/* Service Booking Section */}
       <section className="py-20 bg-gradient-to-br from-slate-800 via-blue-900 to-indigo-900 relative overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
@@ -85,10 +104,10 @@ export default function Register() {
           <div className="bg-slate-800/50 rounded-lg shadow-md p-8 backdrop-blur-sm border border-blue-400/30">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold text-white mb-2">
-                إنشاء حساب جديد
+                احجز خدمتك الآن
               </h1>
               <p className="text-slate-300">
-                انضم إلينا لبدء رحلتك الدراسية في ألمانيا
+                املأ النموذج أدناه وسنتواصل معك لبدء رحلتك الدراسية في ألمانيا
               </p>
             </div>
 
@@ -158,7 +177,7 @@ export default function Register() {
                     htmlFor="phone"
                     className="block text-sm font-medium text-gray-400 mb-2"
                   >
-                    رقم الهاتف *
+                    رقم الهاتف (WhatsApp) *
                   </label>
                   <input
                     type="tel"
@@ -168,12 +187,12 @@ export default function Register() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-slate-700/50 text-white placeholder-slate-400"
-                    placeholder="+49 123 456789"
+                    placeholder="+20 123 4567890"
                   />
                 </div>
               </div>
 
-              {/* Location Information */}
+              {/* Country and Service */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -257,27 +276,6 @@ export default function Register() {
                 </div>
                 <div>
                   <label
-                    htmlFor="city"
-                    className="block text-sm font-medium text-gray-400 mb-2"
-                  >
-                    المدينة
-                  </label>
-                  <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-slate-700/50 text-white placeholder-slate-400"
-                    placeholder="مدينتك"
-                  />
-                </div>
-              </div>
-
-              {/* Study Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
                     htmlFor="desiredService"
                     className="block text-sm font-medium text-gray-400 mb-2"
                   >
@@ -294,23 +292,29 @@ export default function Register() {
                     <option value="" className="text-gray-800">
                       اختر الخدمة
                     </option>
-                    <option value="البحث عن سكن" className="text-gray-800">
-                      البحث عن سكن
+                    <option value="استشارة مجانية" className="text-gray-800">
+                      استشارة مجانية أولاً
+                    </option>
+                    <option value="دعم أساسي" className="text-gray-800">
+                      دعم أساسي (توجيه مهني)
+                    </option>
+                    <option value="دعم شامل" className="text-gray-800">
+                      دعم شامل (الأكثر طلباً)
+                    </option>
+                    <option value="دعم VIP" className="text-gray-800">
+                      دعم VIP (خدمة شخصية)
                     </option>
                     <option value="التسجيل الجامعي" className="text-gray-800">
-                      التسجيل الجامعي
+                      التسجيل الجامعي فقط
+                    </option>
+                    <option value="البحث عن سكن" className="text-gray-800">
+                      البحث عن سكن
                     </option>
                     <option
                       value="دورات اللغة الألمانية"
                       className="text-gray-800"
                     >
                       دورات اللغة الألمانية
-                    </option>
-                    <option
-                      value="الاستقبال في المطار"
-                      className="text-gray-800"
-                    >
-                      الاستقبال في المطار
                     </option>
                     <option
                       value="الحصول على التأشيرة"
@@ -324,190 +328,135 @@ export default function Register() {
                     <option value="الحساب البنكي" className="text-gray-800">
                       فتح الحساب البنكي
                     </option>
-                    <option value="الحزمة الشاملة" className="text-gray-800">
-                      الحزمة الشاملة - كل شيء
+                    <option
+                      value="الاستقبال في المطار"
+                      className="text-gray-800"
+                    >
+                      الاستقبال في المطار
+                    </option>
+                    <option value="مراجعة المستندات" className="text-gray-800">
+                      مراجعة المستندات
+                    </option>
+                    <option value="تحضير المقابلات" className="text-gray-800">
+                      تحضير المقابلات
                     </option>
                     <option value="استفسار" className="text-gray-800">
-                      استفسار فقط
-                    </option>
-                  </select>
-                </div>
-                <div>
-                  <label
-                    htmlFor="studyLevel"
-                    className="block text-sm font-medium text-gray-400 mb-2"
-                  >
-                    مستوى الدراسة المرغوب
-                  </label>
-                  <select
-                    id="studyLevel"
-                    name="studyLevel"
-                    value={formData.studyLevel}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-blue-700/40 text-white placeholder-slate-400"
-                  >
-                    <option value="" className="text-gray-800">
-                      اختر المستوى
-                    </option>
-                    <option value="بكالوريوس" className="text-gray-800">
-                      بكالوريوس
-                    </option>
-                    <option value="ماجستير" className="text-gray-800">
-                      ماجستير
-                    </option>
-                    <option value="دكتوراه" className="text-gray-800">
-                      دكتوراه
-                    </option>
-                    <option value="دورة لغة" className="text-gray-800">
-                      دورة لغة فقط
-                    </option>
-                    <option value="غير محدد" className="text-gray-800">
-                      غير محدد بعد
+                      استفسار آخر
                     </option>
                   </select>
                 </div>
               </div>
 
-              {/* Password Fields */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="password"
-                    className="block text-sm font-medium text-gray-400 mb-2"
-                  >
-                    كلمة المرور *
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    value={formData.password}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-slate-700/50 text-white placeholder-slate-400"
-                    placeholder="أدخل كلمة مرور قوية"
-                    minLength={8}
-                  />
-                  <p className="text-xs text-slate-400 mt-1">
-                    على الأقل 8 أحرف
-                  </p>
-                </div>
-                <div>
-                  <label
-                    htmlFor="confirmPassword"
-                    className="block text-sm font-medium text-gray-400 mb-2"
-                  >
-                    تأكيد كلمة المرور *
-                  </label>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    required
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-slate-700/50 text-white placeholder-slate-400"
-                    placeholder="أعد إدخال كلمة المرور"
-                  />
-                </div>
+              {/* Study Level */}
+              <div>
+                <label
+                  htmlFor="studyLevel"
+                  className="block text-sm font-medium text-gray-400 mb-2"
+                >
+                  مستوى الدراسة المرغوب
+                </label>
+                <select
+                  id="studyLevel"
+                  name="studyLevel"
+                  value={formData.studyLevel}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-blue-700/40 text-white placeholder-slate-400"
+                >
+                  <option value="" className="text-gray-800">
+                    اختر المستوى
+                  </option>
+                  <option value="بكالوريوس" className="text-gray-800">
+                    بكالوريوس
+                  </option>
+                  <option value="ماجستير" className="text-gray-800">
+                    ماجستير
+                  </option>
+                  <option value="دكتوراه" className="text-gray-800">
+                    دكتوراه
+                  </option>
+                  <option value="دورة لغة" className="text-gray-800">
+                    دورة لغة فقط
+                  </option>
+                  <option value="غير محدد" className="text-gray-800">
+                    غير محدد بعد
+                  </option>
+                </select>
               </div>
 
-              {/* Checkboxes */}
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <input
-                    id="agreeToTerms"
-                    name="agreeToTerms"
-                    type="checkbox"
-                    required
-                    checked={formData.agreeToTerms}
-                    onChange={handleChange}
-                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded mt-1"
-                  />
-                  <label
-                    htmlFor="agreeToTerms"
-                    className="ml-3 block text-sm text-gray-400"
-                  >
-                    أوافق على{" "}
-                    <a
-                      href="#"
-                      className="text-primary hover:text-primary-dark underline"
-                    >
-                      الشروط والأحكام
-                    </a>{" "}
-                    و{" "}
-                    <a
-                      href="#"
-                      className="text-primary hover:text-primary-dark underline"
-                    >
-                      سياسة الخصوصية
-                    </a>{" "}
-                    *
-                  </label>
-                </div>
-
-                <div className="flex items-start">
-                  <input
-                    id="newsletter"
-                    name="newsletter"
-                    type="checkbox"
-                    checked={formData.newsletter}
-                    onChange={handleChange}
-                    className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded mt-1"
-                  />
-                  <label
-                    htmlFor="newsletter"
-                    className="ml-3 block text-sm text-gray-400"
-                  >
-                    أريد تلقي النشرة الإخبارية والتحديثات
-                  </label>
-                </div>
+              {/* Message */}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-400 mb-2"
+                >
+                  رسالة إضافية (اختياري)
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors bg-slate-700/50 text-white placeholder-slate-400 resize-vertical"
+                  placeholder="اكتب أي معلومات إضافية تود مشاركتها معنا..."
+                />
               </div>
 
-              <UiButton type="submit" className="w-full" size="lg">
-                إنشاء الحساب
+              <UiButton
+                type="submit"
+                className="w-full cursor-pointer"
+                size="lg"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "يتم الإرسال..." : "احجز الخدمة الآن"}
               </UiButton>
             </form>
 
             <div className="mt-6 text-center">
               <p className="text-slate-300">
-                لديك حساب بالفعل؟{" "}
+                تفضل التحدث معنا أولاً؟{" "}
                 <Link
-                  href="/login"
+                  href="/contact"
                   className="text-blue-400 hover:text-blue-300 font-medium transition-all duration-300 transform hover:scale-105 hover:translate-x-1 relative overflow-hidden group"
                 >
-                  سجل الدخول
+                  تواصل معنا
                 </Link>
               </p>
             </div>
           </div>
 
-          {/* Benefits Info */}
+          {/* Service Benefits */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-              <div className="text-2xl mb-2 text-green-600">
+            <div className="bg-green-50/10 border border-green-400/30 rounded-lg p-4 text-center backdrop-blur-sm">
+              <div className="text-2xl mb-2 text-green-400">
                 <CheckCircle className="w-8 h-8 mx-auto" />
               </div>
-              <h3 className="text-sm font-semibold text-green-900">مجاني</h3>
-              <p className="text-xs text-green-800">
-                إنشاء الحساب مجاني تماماً
+              <h3 className="text-sm font-semibold text-green-400">
+                استشارة مجانية
+              </h3>
+              <p className="text-xs text-green-300">
+                أول استشارة مجانية قبل الحجز
               </p>
             </div>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-              <div className="text-2xl mb-2 text-blue-600">
+            <div className="bg-blue-50/10 border border-blue-400/30 rounded-lg p-4 text-center backdrop-blur-sm">
+              <div className="text-2xl mb-2 text-blue-400">
                 <Shield className="w-8 h-8 mx-auto" />
               </div>
-              <h3 className="text-sm font-semibold text-blue-900">آمن</h3>
-              <p className="text-xs text-blue-800">
-                بياناتك محمية بتشفير متقدم
-              </p>
+              <h3 className="text-sm font-semibold text-blue-400">
+                ضمان الرضا
+              </h3>
+              <p className="text-xs text-blue-300">رضاك التام أو نعيد أموالك</p>
             </div>
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
-              <div className="text-2xl mb-2 text-purple-600">
+            <div className="bg-purple-50/10 border border-purple-400/30 rounded-lg p-4 text-center backdrop-blur-sm">
+              <div className="text-2xl mb-2 text-purple-400">
                 <Rocket className="w-8 h-8 mx-auto" />
               </div>
-              <h3 className="text-sm font-semibold text-purple-900">سريع</h3>
-              <p className="text-xs text-purple-800">ابدأ رحلتك خلال دقائق</p>
+              <h3 className="text-sm font-semibold text-purple-400">
+                بدء سريع
+              </h3>
+              <p className="text-xs text-purple-300">
+                نبدأ العمل فوراً بعد الحجز
+              </p>
             </div>
           </div>
         </div>

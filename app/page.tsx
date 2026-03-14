@@ -173,6 +173,58 @@ export default function Home() {
           <div className="absolute bottom-20 left-1/4 w-3 h-3 bg-green-400/40 rounded-full animate-pulse-delay-6"></div>
           <div className="absolute top-1/2 right-10 w-5 h-5 bg-purple-400/30 rounded-full animate-pulse-delay-7"></div>
           <div className="absolute bottom-10 right-1/3 w-4 h-4 bg-pink-400/35 rounded-full animate-pulse-delay-8"></div>
+
+          {/* Floating logos */}
+          <div
+            className="absolute top-16 right-16 w-8 h-8 opacity-30 animate-pulse"
+            style={{ animationDuration: "3s" }}
+          >
+            <img
+              src="/bedaya-logo.png"
+              alt="Bedaya Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div
+            className="absolute bottom-16 left-16 w-12 h-12 opacity-25 animate-pulse"
+            style={{ animationDuration: "4s", animationDelay: "1s" }}
+          >
+            <img
+              src="/bedaya-logo.png"
+              alt="Bedaya Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div
+            className="absolute top-1/2 left-20 w-6 h-6 opacity-20 animate-pulse"
+            style={{ animationDuration: "5s", animationDelay: "2s" }}
+          >
+            <img
+              src="/bedaya-logo.png"
+              alt="Bedaya Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div
+            className="absolute top-1/3 right-20 w-10 h-10 opacity-25 animate-pulse"
+            style={{ animationDuration: "3.5s", animationDelay: "0.5s" }}
+          >
+            <img
+              src="/bedaya-logo.png"
+              alt="Bedaya Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div
+            className="absolute bottom-1/3 left-1/4 w-7 h-7 opacity-22 animate-pulse"
+            style={{ animationDuration: "4.5s", animationDelay: "1.5s" }}
+          >
+            <img
+              src="/bedaya-logo.png"
+              alt="Bedaya Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -462,7 +514,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-            ابدأ رحلتك الدراسية اليوم
+            هل أنت مستعد للبدء؟
           </h2>
           <p className="text-xl mb-8 leading-relaxed text-slate-200 animate-fade-in-up animate-delay-200">
             لا تدع التعقيدات تمنعك من تحقيق حلمك الدراسي في ألمانيا. نحن هنا
@@ -545,6 +597,57 @@ export default function Home() {
                 "الخدمة ممتازة والتواصل مستمر. ساعدوني في الحصول على فيزا
                 الدراسة وإيجاد السكن المناسب. أنصح بهم بشدة!"
               </p>
+            </div>
+          </div>
+
+          {/* Start Your Journey Section */}
+          <div className="mt-16 text-center">
+            <div className="bg-black rounded-2xl p-8 border border-blue-400/30 backdrop-blur-sm">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+                ابدأ رحلتك الدراسية اليوم
+              </h3>
+              <p className="text-lg text-slate-200 mb-6 max-w-2xl mx-auto">
+                انضم إلى مئات الطلاب العرب الذين حققوا أحلامهم الدراسية في
+                ألمانيا. فرصتك تبدأ الآن، لا تؤجل مستقبلك!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <UiButton
+                  href="/register"
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600"
+                >
+                  ابدأ الآن
+                </UiButton>
+                <UiButton
+                  href="/contact"
+                  size="lg"
+                  className="bg-none bg-slate-700/80 hover:bg-slate-600/80 border border-blue-400/30"
+                >
+                  استشارة مجانية
+                </UiButton>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">
+                    500+
+                  </div>
+                  <div className="text-slate-300">طالب ساعدناه</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-cyan-400 mb-2">
+                    95%
+                  </div>
+                  <div className="text-slate-300">نسبة القبول</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-green-400 mb-2">
+                    50+
+                  </div>
+                  <div className="text-slate-300">جامعة شريكة</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

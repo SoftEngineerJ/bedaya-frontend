@@ -109,6 +109,69 @@ export default function Services() {
           <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-gradient-to-br from-indigo-700/12 to-purple-700/12 rotate-45 animate-spin-slow"></div>
           <div className="absolute top-1/2 left-2/3 w-12 h-12 bg-gradient-to-br from-rose-700/12 to-pink-700/12 rotate-90 animate-spin-slow-reverse"></div>
 
+          {/* Animated Particles in Hero Section */}
+          <div className="absolute top-10 left-20 w-3 h-3 bg-blue-400/60 rounded-full animate-bounce delay-100"></div>
+          <div className="absolute top-32 right-32 w-4 h-4 bg-cyan-400/50 rounded-full animate-bounce delay-300"></div>
+          <div className="absolute bottom-20 left-40 w-2 h-2 bg-green-400/70 rounded-full animate-bounce delay-500"></div>
+          <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-indigo-400/60 rounded-full animate-bounce delay-700"></div>
+          <div className="absolute bottom-1/4 right-20 w-5 h-5 bg-teal-400/40 rounded-full animate-bounce delay-900"></div>
+
+          {/* Moving squares */}
+          <div
+            className="absolute top-20 left-1/4 w-6 h-6 bg-purple-400/30 transform rotate-45 animate-spin"
+            style={{ animationDuration: "8s" }}
+          ></div>
+          <div
+            className="absolute top-1/2 right-1/4 w-4 h-4 bg-pink-400/30 transform rotate-45 animate-spin"
+            style={{ animationDuration: "12s", animationDelay: "2s" }}
+          ></div>
+          <div
+            className="absolute bottom-32 left-1/3 w-5 h-5 bg-yellow-400/30 transform rotate-45 animate-spin"
+            style={{ animationDuration: "10s", animationDelay: "4s" }}
+          ></div>
+
+          {/* Floating logos */}
+          <div
+            className="absolute top-16 right-16 w-8 h-8 opacity-30 animate-pulse"
+            style={{ animationDuration: "3s" }}
+          >
+            <img
+              src="/bedaya-logo.png"
+              alt="Bedaya Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div
+            className="absolute bottom-16 left-16 w-12 h-12 opacity-25 animate-pulse"
+            style={{ animationDuration: "4s", animationDelay: "1s" }}
+          >
+            <img
+              src="/bedaya-logo.png"
+              alt="Bedaya Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <div
+            className="absolute top-1/2 left-20 w-6 h-6 opacity-20 animate-pulse"
+            style={{ animationDuration: "5s", animationDelay: "2s" }}
+          >
+            <img
+              src="/bedaya-logo.png"
+              alt="Bedaya Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          {/* Moving triangles */}
+          <div
+            className="absolute top-1/4 left-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[16px] border-b-orange-400/40 animate-pulse"
+            style={{ animationDuration: "2s" }}
+          ></div>
+          <div
+            className="absolute bottom-1/3 right-1/3 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[12px] border-b-red-400/40 animate-pulse"
+            style={{ animationDuration: "3s", animationDelay: "1s" }}
+          ></div>
+
           {/* Small decorative dots */}
           <div className="absolute top-10 left-1/2 w-3 h-3 bg-blue-400/35 rounded-full animate-pulse-delay-4"></div>
           <div className="absolute top-20 right-1/2 w-4 h-4 bg-cyan-400/30 rounded-full animate-pulse-delay-5"></div>

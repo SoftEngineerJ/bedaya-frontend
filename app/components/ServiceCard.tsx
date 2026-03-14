@@ -115,7 +115,11 @@ const ServiceCard = ({
               </ul>
             )}
 
-            <UiButton href="/contact" className="w-full mt-auto" size="lg">
+            <UiButton
+              href="/register"
+              className="w-full mt-auto cursor-pointer"
+              size="lg"
+            >
               اختر هذه الخدمة
             </UiButton>
           </div>

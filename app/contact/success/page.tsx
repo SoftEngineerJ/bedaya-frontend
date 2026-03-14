@@ -116,7 +116,7 @@ export default function ContactSuccess() {
 
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="bg-emerald-500/20 text-emerald-400 p-2 rounded-lg ml-4 mt-1">
+                <div className="bg-emerald-500/20 text-emerald-400 p-2 rounded-lg ml-6 mt-1">
                   <svg
                     className="w-5 h-5"
                     fill="currentColor"
@@ -140,7 +140,7 @@ export default function ContactSuccess() {
               </div>
 
               <div className="flex items-start">
-                <div className="bg-blue-500/20 text-blue-400 p-2 rounded-lg ml-4 mt-1">
+                <div className="bg-blue-500/20 text-blue-400 p-2 rounded-lg ml-6 mt-1">
                   <svg
                     className="w-5 h-5"
                     fill="currentColor"
@@ -161,7 +161,7 @@ export default function ContactSuccess() {
               </div>
 
               <div className="flex items-start">
-                <div className="bg-purple-500/20 text-purple-400 p-2 rounded-lg ml-4 mt-1">
+                <div className="bg-purple-500/20 text-purple-400 p-2 rounded-lg ml-6 mt-1">
                   <svg
                     className="w-5 h-5"
                     fill="currentColor"
