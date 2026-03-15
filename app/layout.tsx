@@ -33,6 +33,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charSet="UTF-8" />
+        <script src="/analytics.js" async></script>
       </head>
       <body
         className={`${cairo.variable} font-arabic antialiased bg-gray-50 text-gray-900`}
