@@ -54,9 +54,6 @@ class BedayaAnalytics {
     // Track visibility changes (tab focus/blur)
     this.trackVisibilityChanges();
 
-    // Track clicks (optional)
-    this.trackClicks();
-
     this.isTracking = true;
   }
 
@@ -159,40 +156,6 @@ class BedayaAnalytics {
         this.currentPageStartTime = Date.now();
       }
     });
-  }
-
-  // Track clicks (optional - for interaction analytics)
-  trackClicks() {
-    document.addEventListener("click", (event) => {
-      const target = event.target;
-      const clickData = {
-        sessionId: this.sessionId,
-        pageUrl: window.location.pathname,
-        elementType: target.tagName.toLowerCase(),
-        elementId: target.id || "",
-        elementClass: target.className || "",
-        elementText: target.textContent?.substring(0, 50) || "",
-        timestamp: Date.now(),
-      };
-
-      // Send click data (optional endpoint)
-      this.sendClickData(clickData);
-    });
-  }
-
-  // Send click data (optional)
-  async sendClickData(data) {
-    try {
-      await fetch(`${this.apiBaseUrl}/api/analytics/click`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-    } catch (error) {
-      // Silently fail for click tracking
-    }
   }
 
   // Public method to manually track events
