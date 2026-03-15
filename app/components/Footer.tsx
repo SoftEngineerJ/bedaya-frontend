@@ -74,7 +74,7 @@ const Footer = () => {
               <div className="space-y-2 text-gray-300">
                 <p className="flex items-center gap-3">
                   <Mail className="w-4 h-4" />
-                  info@bedaya-study.com
+                  bedaya.study@web.de
                 </p>
                 <p className="flex items-center gap-3">
                   <MapPin className="w-4 h-4" />

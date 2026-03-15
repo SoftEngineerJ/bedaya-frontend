@@ -202,7 +202,7 @@ export default function ContactSuccess() {
               <div className="text-blue-400 font-semibold mb-2">
                 البريد الإلكتروني
               </div>
-              <div className="text-white text-xl">info@bedaya-study.com</div>
+              <div className="text-white text-xl">bedaya.study@web.de</div>
             </div>
           </div>
 
