@@ -33,6 +33,10 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charSet="UTF-8" />
+        <meta
+          name="google-site-verification"
+          content="In7C7rIBwk7fM4bCAo4uUgd5tIGuhZ0SIGy-TdC4UiM"
+        />
         <script src="/analytics.js" async></script>
       </head>
       <body
