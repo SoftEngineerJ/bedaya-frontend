@@ -2,7 +2,9 @@
 class BedayaAnalytics {
   constructor(config = {}) {
     this.apiBaseUrl =
-      config.apiBaseUrl || "https://bedaya-backend-production.up.railway.app";
+      config.apiBaseUrl ||
+      process.env.NEXT_PUBLIC_API_URL ||
+      "http://localhost:8080";
     this.sessionId = this.getOrCreateSessionId();
     this.isTracking = false;
     this.currentPageStartTime = Date.now();
